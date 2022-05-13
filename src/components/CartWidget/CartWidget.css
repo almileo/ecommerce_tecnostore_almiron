@@ -1,0 +1,13 @@
+span {
+    color: black;
+}
+
+.icon {
+    width: 40px;
+    margin-top: 7px;
+}
+
+.cart {
+    position: relative;
+    left: 45px;
+}
