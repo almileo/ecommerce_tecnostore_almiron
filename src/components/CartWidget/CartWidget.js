@@ -1,10 +1,10 @@
 import './CartWidget.css';
 
-const CartWidget = (props) => {
+const CartWidget = ({cartItems}) => {
     return(
         <div className='cart'>
             <img className='icon' src="./img/cart.png" alt="cart"/>
-            <span>{props.cartItems}</span>
+            <span>{ cartItems }</span>
         </div>
     )
 }
