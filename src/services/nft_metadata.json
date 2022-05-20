@@ -1,0 +1,28 @@
+{
+  "description": "Thisi i my First NFT following the Alchemy Road to Web3 tutorial by Vitto.", 
+  "external_url": "https://www.alchemy.com/", 
+  "image": "https://ipfs.filebase.io/ipfs/bafybeihyvhgbcov2nmvbnveunoodokme5eb42uekrqowxdennt2qyeculm", 
+  "name": "MetaCrypt0 NFT ERC721",
+  "attributes": [
+         {
+           "trait_type": "Token std", 
+           "value": "ERC721"
+         }, 
+         {
+           "trait_type": "Github", 
+           "value": "https://github.com/almileo"
+         }, 
+         {
+           "trait_type": "Level", 
+           "value": 5
+         }, 
+         {
+           "trait_type": "Stamina", 
+           "value": "To the moon"
+         }, 
+         {
+           "trait_type": "Personality", 
+           "value": "HODL"
+         }
+    ]
+}

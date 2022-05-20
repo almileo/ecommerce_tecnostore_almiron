@@ -23,7 +23,7 @@ const ItemCount = ({stock, initial, getItemsCount}) => {
 
     return (
         <>
-            <div className='card'>
+            <div className='card-count'>
                 <div>Descripcion, foto, etc</div>
 
                 <div className='center'>

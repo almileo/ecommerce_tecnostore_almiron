@@ -1,0 +1,44 @@
+.card-product {
+    display: flex;
+    border: 1px solid #000;
+    padding: 15px;
+    border-radius: 6px;
+    margin: 5px 0px;
+    justify-content: space-between;
+    width: 20em;
+}
+
+.info {
+    font-size: small;
+}
+
+.product-image {
+    height: 8em;
+}
+
+#product {
+    height: 100%;
+}
+
+.card-text {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+}
+
+.id {
+    font-size: small;
+    margin: 10px 0px;
+}
+
+.label {
+    color: #fff;
+    position: relative;
+    bottom: 0.6rem;
+}
+
+.small {
+    min-width: 10px;
+    height: 15px;
+}
