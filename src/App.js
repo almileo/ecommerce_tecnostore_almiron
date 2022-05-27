@@ -1,6 +1,7 @@
 import './App.css';
 import NavBar from './components/NavBar/NavBar';
 import ItemListContainer from './components/ItemListContainer/ItemListContainer';
+import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
 import ItemCount from './components/ItemCount/ItemCount';
 import Item from './components/Item/Item';
 import { useState } from 'react';
@@ -16,7 +17,8 @@ function App() {
     <div className="App">
       <header className="App-header">
         <NavBar cartItems={itemsToCart}></NavBar>
-        <ItemListContainer greeting="Muchas gracias por la buena onda!"></ItemListContainer>
+        {/* <ItemListContainer greeting="Muchas gracias por la buena onda!"></ItemListContainer> */}
+        <ItemDetailContainer />
         <ItemCount stock={20} initial={1} getItemsCount={getItemsCount}></ItemCount>
       </header>
     </div>

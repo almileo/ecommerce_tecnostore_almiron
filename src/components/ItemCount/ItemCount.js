@@ -24,8 +24,6 @@ const ItemCount = ({stock, initial, getItemsCount}) => {
     return (
         <>
             <div className='card-count'>
-                <div>Descripcion, foto, etc</div>
-
                 <div className='center'>
                     <button className='button substract' onClick={removeItemCount} style={stock === 0 || itemCount !== 0? {cursor: 'pointer'} : {cursor: 'default'}} disabled={stock === 0 || itemCount === 0}> - </button>
                     <span>{ itemCount }</span>

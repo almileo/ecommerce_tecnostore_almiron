@@ -1,6 +1,6 @@
 import './Item.css';
 
-const Item = ({id, title, price, productImg, stock}) => {
+const Item = ({sku, title, price, productImg, stock}) => {
 
     const goToDetails = () => {
         console.log('Redirect to the detail of the item');
@@ -16,7 +16,7 @@ const Item = ({id, title, price, productImg, stock}) => {
                 <div className='card-text'>
                     <span>{ title }</span>
                     <span>U$D { price }</span>
-                    <span className='info'>SKU { id } | Stock: { stock }</span>
+                    <span className='info'>SKU { sku } | Stock: { stock }</span>
                     <div>
                         <button className='button-50 small' onClick={goToDetails}><span className='label'>Ver más</span></button>
                     </div>
