@@ -1,21 +1,27 @@
 import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { BounceLoader } from 'react-spinners';
+
 import './ItemDetailContainer.css';
+
 import ItemDetail from '../ItemDetail/ItemDetail';
 import { getProductsBySku } from '../../services/productDataMock';
 
 const ItemDetailContainer = () => {
     const [detail, setDetail] = useState();
+    console.log('detail: ', detail);
+    const { sku } = useParams();
 
     useEffect(() => {
-      getProductsBySku('1').then(res => {
+      getProductsBySku(sku).then(res => {
           setDetail(res);
-          console.log('detail: ', detail);
       }).catch(err => console.log('error: ', err));
     }, [])
     
   return (
     <div>
-        <ItemDetail {...detail} />
+
+      { detail ? <ItemDetail {...detail} /> : <BounceLoader size={100} color='#541690' /> }
     </div>
   )
 }

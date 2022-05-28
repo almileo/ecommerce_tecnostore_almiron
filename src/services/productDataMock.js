@@ -46,14 +46,22 @@ export const getProducts = () => {
     return new Promise((res) => {
         setTimeout(() => {
             res(products)
-        }, 2500)
+        }, 1000)
     })
 }
 
 export const getProductsBySku = (sku) => {
     return new Promise((res) => {
-        setTimeout((prod) => {
+        setTimeout(() => {
             res(products.find((prod) => prod.sku === sku))
-        }, 2500)
+        }, 1000)
+    })
+}
+
+export const getProductsByCategory = (category) => {
+    return new Promise((res) => {
+        setTimeout(() => {
+            res(products.filter((prod) => prod.category === category))
+        }, 1000)
     })
 }

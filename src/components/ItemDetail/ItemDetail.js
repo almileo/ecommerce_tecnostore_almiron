@@ -1,27 +1,25 @@
 import React from "react";
-import './ItemDetail.css';
 
+import './ItemDetail.css';
+import ItemCount from '../ItemCount/ItemCount';
 const ItemDetail = ({ title, sku, stock, productImg, price, description }) => {
+  console.log('productImg: ', productImg);
   return (
     <div className="detail-product">
       <div className="product-image">
-        <img id="product" src={productImg} alt="product image" />
-        {/* <img id='product' src='./img/tecnostore_logo-removebg.png' alt='product image'/> */}
+        <img id="product" src={ productImg } alt="product image" />
       </div>
     
-      <div className="detail-text">
-        <span>{title}</span>
+      <div className="detail-text center-column">
+        <span>{ title }</span>
         <span className="description">{description}</span>
         <div>
-            <span className="detail-price">U$D {price} - </span>
-            <span className="detail-info">SKU {sku} | Stock: {stock}</span>
+            <span className="detail-price">U$D { price } - </span>
+            <span className="detail-info">SKU { sku } | Stock: { stock }</span>
         </div>
-        
-        {/* <div>
-          <button className="button-50 small" onClick={goToDetails}>
-            <span className="label">Ver más</span>
-          </button>
-        </div> */}
+        <div className="count-container">
+          <ItemCount stock={stock} initial={1}></ItemCount>
+        </div>
       </div>
     </div>
   );
