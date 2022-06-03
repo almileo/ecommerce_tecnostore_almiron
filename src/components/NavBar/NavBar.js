@@ -4,7 +4,7 @@ import './NavBar.css';
 
 import CartWidget from '../CartWidget/CartWidget';
 
-const NavBar = ({cartItems}) => {
+const NavBar = () => {
     
     return (
         <nav className='navbar'>
@@ -18,7 +18,7 @@ const NavBar = ({cartItems}) => {
                 <Link to='/products/hardware-wallet' className='button-50 menu'>Wallets</Link> 
                 <Link to='/contact' className='button-50 menu'>Contacto</Link> 
             </div>
-            <CartWidget cartItems={cartItems}></CartWidget>
+            <CartWidget></CartWidget>
             <div className='login'>
                 <Link to='/login' className="button-50 menu">Login</Link>
             </div>

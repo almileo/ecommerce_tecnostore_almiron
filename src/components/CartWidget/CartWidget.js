@@ -1,10 +1,10 @@
 import './CartWidget.css';
 
-const CartWidget = ({cartItems}) => {
+const CartWidget = () => {
     return(
         <div className='cart'>
             <img className='icon' src="./img/cart.png" alt="cart"/>
-            <span>{ cartItems }</span>
+            <span>{ 0 }</span>
         </div>
     )
 }
