@@ -5,9 +5,11 @@ span {
 .icon {
     width: 40px;
     margin-top: 7px;
+    color: #541690;
 }
 
 .cart {
     position: relative;
     left: 45px;
+    text-decoration: none;
 }

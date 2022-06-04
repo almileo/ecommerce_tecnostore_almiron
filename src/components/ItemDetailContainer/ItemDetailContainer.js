@@ -9,7 +9,6 @@ import { getProductsBySku } from '../../services/productDataMock';
 
 const ItemDetailContainer = () => {
     const [detail, setDetail] = useState();
-    console.log('detail: ', detail);
     const { sku } = useParams();
 
     useEffect(() => {
