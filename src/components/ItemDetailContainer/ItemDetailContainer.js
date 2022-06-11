@@ -5,17 +5,21 @@ import { BounceLoader } from 'react-spinners';
 import './ItemDetailContainer.css';
 
 import ItemDetail from '../ItemDetail/ItemDetail';
-import { getProductsBySku } from '../../services/productDataMock';
+import { getDoc, doc } from 'firebase/firestore';
+import { db } from '../../services/firebase';
 
 const ItemDetailContainer = () => {
     const [detail, setDetail] = useState();
     const { sku } = useParams();
 
     useEffect(() => {
-      getProductsBySku(sku).then(res => {
-          setDetail(res);
-      }).catch(err => console.log('error: ', err));
-    }, [])
+      setDetail();
+      getDoc(doc(db, 'products', sku)).then(res => {
+        const product = { sku: res.id, ...res.data() };
+        setDetail(product);
+      }).catch(e => console.log('error: ', e));
+
+    }, [sku])
     
   return (
     <div>

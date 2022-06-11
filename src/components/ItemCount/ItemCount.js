@@ -18,7 +18,6 @@ const ItemCount = ({ stock, initial, addToCart }) => {
     }
 
     const addCart = () => {
-        console.log('itemCount: ', itemCount);
         addToCart(itemCount)
     }
 

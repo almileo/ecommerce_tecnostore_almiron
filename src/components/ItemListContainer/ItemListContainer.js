@@ -5,30 +5,33 @@ import { BounceLoader } from 'react-spinners';
 import './ItemListContainer.css';
 
 import ItemList from '../ItemList/ItemList';
-import { getProducts, getProductsByCategory } from '../../services/productDataMock';
+import { getDocs, collection, query, where } from 'firebase/firestore';
+import { db } from '../../services/firebase';
 
 const ItemListContainer = (props) => {
   const [products, setProducts] = useState([]);
   const { category } = useParams();
+  console.log('category: ', category);
 
   useEffect(() => {
     setProducts([]);
-    if(!category) {
-       getProducts().then((res) => {
-        setProducts(res)
-      });
-    } else {
-      getProductsByCategory(category).then(res => {
-        setProducts(res)
-      });
-    }
+
+    const collectionRef = category ? query(collection(db, 'products'), where('category', '==', category)) : collection(db, 'products');
+
+    getDocs(collectionRef).then(res => {
+      const products =  res.docs.map((doc) => {
+        return { sku: doc.id, ...doc.data() }
+      })
+      console.log('prducts: ', products);
+      setProducts(products);
+    }).catch(e => console.log('error: ', e));
    
   }, [category]);
 
 
     return (
       <div className='wrapper'>
-        { products.length == 0 ? <BounceLoader size={100} color='#541690' /> : <ItemList products={products} /> }
+        { products.length === 0 ? <BounceLoader size={100} color='#541690' /> : <ItemList products={products} /> }
       </div>
     )
     

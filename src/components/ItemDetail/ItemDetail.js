@@ -40,7 +40,7 @@ const ItemDetail = ({ title, sku, stock, productImg, price, description }) => {
             <span className="detail-info">SKU { sku } | Stock: { stock }</span>
         </div>
         <div className="count-container">
-          { quantity > 0 ? <PurchaseButton /> : <ItemCount stock={stock} initial={initialCounter == 0 ? 1 : initialCounter} addToCart={handleAddToCart}></ItemCount>  }
+          { quantity > 0 ? <PurchaseButton /> : <ItemCount stock={stock} initial={initialCounter === 0 ? 1 : initialCounter} addToCart={handleAddToCart}></ItemCount>  }
         </div>
       </div>
     </div>

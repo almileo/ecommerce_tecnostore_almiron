@@ -6,13 +6,10 @@ export const CartContextProvider = ({ children }) => {
     const [cart, setCart] = useState([]);
     
     const addItemToCart = (itemToAdd) => {
-        console.log('isInCart: ', isInCart() );
         if (!isInCart(itemToAdd.sku)) {
             setCart([...cart, itemToAdd]);
-            console.log('cart - en el if: ', cart);
             
         } else {
-            console.log('entre al else');
             const cartCopy = cart.map((prod) => {
                 if(prod.sku === itemToAdd.sku) {
                     const newItem = {
@@ -26,7 +23,6 @@ export const CartContextProvider = ({ children }) => {
             });
             
             setCart(cartCopy);
-            console.log('cart en el else: ', cart);
         }
     }
 
@@ -41,7 +37,6 @@ export const CartContextProvider = ({ children }) => {
 
     const getProductInCart = (sku) => {
         const prod = cart.find((prod) => prod.sku === sku);
-        console.log('prod: ', prod);
         return prod ? prod.quantity : 0;
     }
 

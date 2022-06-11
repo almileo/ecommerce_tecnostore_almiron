@@ -25,6 +25,7 @@ const ItemCart = ({ sku, price, quantity, title }) => {
         <div>
             <span>  Subtotal ${ price * quantity }</span>
         </div>
+        
         <div>
             <FontAwesomeIcon onClick={() => removeProduct(sku)} className='remove-icon' icon={faMinusCircle}/>
         </div>
