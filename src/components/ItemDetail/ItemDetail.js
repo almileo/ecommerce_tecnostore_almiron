@@ -34,7 +34,7 @@ const ItemDetail = ({ title, sku, stock, productImg, price, description }) => {
     
       <div className="detail-text center-column">
         <span>{ title }</span>
-        <span className="description">{description}</span>
+        <span className="description">{ description }</span>
         <div>
             <span className="detail-price">U$D { price } - </span>
             <span className="detail-info">SKU { sku } | Stock: { stock }</span>

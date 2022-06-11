@@ -4,11 +4,15 @@ const CartContext = createContext();
 
 export const CartContextProvider = ({ children }) => {
     const [cart, setCart] = useState([]);
-
+    
     const addItemToCart = (itemToAdd) => {
-        if (!isInCart()) {
+        console.log('isInCart: ', isInCart() );
+        if (!isInCart(itemToAdd.sku)) {
             setCart([...cart, itemToAdd]);
+            console.log('cart - en el if: ', cart);
+            
         } else {
+            console.log('entre al else');
             const cartCopy = cart.map((prod) => {
                 if(prod.sku === itemToAdd.sku) {
                     const newItem = {
@@ -20,8 +24,9 @@ export const CartContextProvider = ({ children }) => {
                     return prod;
                 }
             });
-
+            
             setCart(cartCopy);
+            console.log('cart en el else: ', cart);
         }
     }
 
