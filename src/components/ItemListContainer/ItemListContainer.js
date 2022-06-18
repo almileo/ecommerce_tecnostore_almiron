@@ -11,7 +11,6 @@ import { db } from '../../services/firebase';
 const ItemListContainer = (props) => {
   const [products, setProducts] = useState([]);
   const { category } = useParams();
-  console.log('category: ', category);
 
   useEffect(() => {
     setProducts([]);
@@ -22,7 +21,6 @@ const ItemListContainer = (props) => {
       const products =  res.docs.map((doc) => {
         return { sku: doc.id, ...doc.data() }
       })
-      console.log('prducts: ', products);
       setProducts(products);
     }).catch(e => console.log('error: ', e));
    

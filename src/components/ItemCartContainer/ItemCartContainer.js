@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashAlt } from '@fortawesome/fontawesome-free-solid'
 import ReactTooltip from 'react-tooltip';
@@ -9,15 +10,7 @@ import CartContext from '../../context/CartContext';
 
 
 const ItemCartContainer = () => {
-    const { cart, clearCart } = useContext(CartContext);
-    console.log('cart: ', cart);
-
-    let total = 0;
-    cart.forEach((item) => {
-      total += item.quantity * item.price
-    });
-
-    console.log('total:', total);    
+    const { cart, clearCart, getTotal } = useContext(CartContext);
 
   return (
     <div>
@@ -30,7 +23,12 @@ const ItemCartContainer = () => {
                         <FontAwesomeIcon onClick={() => clearCart()} className='remove-icon' icon={faTrashAlt} />
                         <ReactTooltip id='emptyCart' place='bottom' effect='solid' globalEventOff='click'>Empty cart</ReactTooltip>
                       </div>
-                        <div className='total'>Total: $ { total }</div>
+                      <div className='checkout'>
+                        <div className='total'>Total: $ { getTotal() }</div>
+                        <div>
+                          <Link to={'/checkout'} className='button-50'>Checkout</Link>
+                        </div>
+                      </div>
                     </div> 
 
         }

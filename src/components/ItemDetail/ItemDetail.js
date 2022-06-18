@@ -19,7 +19,6 @@ const ItemDetail = ({ title, sku, stock, productImg, price, description }) => {
   const { addItemToCart, getProductInCart } = useContext(CartContext);
 
   const initialCounter = getProductInCart(sku);
-  console.log('initialCounter: ', initialCounter);
   
   const handleAddToCart = (quantity) => {
     setQuantity(quantity);

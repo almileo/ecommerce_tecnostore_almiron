@@ -1,4 +1,10 @@
 .total {
-    margin-top: 50px;
     color: black;
+    margin-right: 50px;
+}
+
+.checkout {
+    margin-top: 60px;
+    display: flex;
+    justify-content: center;
 }
