@@ -1,16 +1,18 @@
 import React, { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Form, TextField, NumberField, SubmitField } from 'react-components-form';
 import Schema from 'form-schema-validation';
 
 import { db } from '../../services/firebase';
-import { addDoc, collection } from 'firebase/firestore';
+import { addDoc, collection, documentId, getDocs, query, where, writeBatch } from 'firebase/firestore';
 
 import './CheckoutForm.css';
 import CartContext from '../../context/CartContext';
 
 const CheckoutForm = () => {
 
-    const { cart, getTotal } = useContext(CartContext);
+    const { cart, getTotal, clearCart } = useContext(CartContext);
+    const navigate = useNavigate();
 
     const ErrorMessages = {
         validateRequired(label) { return `El campo '${label}' es Requerido`; }
@@ -56,11 +58,42 @@ const CheckoutForm = () => {
                 total: getTotal()
             }
 
-            const collectionRef = collection(db, 'orders');
+            const batch = writeBatch(db);
+            const ids = cart.map((prod) => prod.sku);
+            const outOfStock = [];
 
-            addDoc(collectionRef, order).then(({ id }) => {
-                alert(`Se creo su orden con la identificacion ${id}`)
-            }).catch(error => console.log('error: ', error));
+            const collectionRefProd = collection(db, 'products');
+
+            getDocs(query(collectionRefProd, where(documentId(), 'in', ids)))
+                .then((res) => {
+                    res.docs.forEach((doc) => {
+                        const dataDoc = doc.data();
+                        const productQty = cart.find((prod) => prod.sku === doc.id)?.quantity;
+                        if(dataDoc.stock >= productQty) {
+                            batch.update(doc.ref, { stock: dataDoc.stock - productQty });
+                        } else {
+                            outOfStock.push({ sku: doc.sku, ...dataDoc });
+                        }
+                    })
+                }).then(() => {
+                    if(outOfStock.length === 0) {
+                        const collectionRef = collection(db, 'orders');
+
+                        return addDoc(collectionRef, order);
+                    } else {
+                        return Promise.reject({ type: 'out_of_stock', products: outOfStock });
+                    }
+                }).then(({ id }) => {
+                    batch.commit();
+                    navigate('/');
+                    clearCart();
+                    alert(`Se creo su orden con la identificacion ${id}`);
+                }).catch((error) => {
+                    console.error(`El error fue: ${error}`);
+                    if(error.type === 'out_of_stock') {
+                        alert(`Los siguientes productos no tienen stock disponible ${outOfStock}`);
+                    }
+                });
 
         }
     }
