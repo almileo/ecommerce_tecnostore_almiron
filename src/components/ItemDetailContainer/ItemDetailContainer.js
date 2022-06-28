@@ -30,5 +30,3 @@ const ItemDetailContainer = () => {
 }
 
 export default ItemDetailContainer
-
-938233
