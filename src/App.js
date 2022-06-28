@@ -7,6 +7,7 @@ import ItemListContainer from './components/ItemListContainer/ItemListContainer'
 import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
 import ItemCartContainer from './components/ItemCartContainer/ItemCartContainer';
 import Checkout from './components/Checkout/Checkout';
+import LoginContainer from './components/LoginCointainer/LoginContainer';
 import { CartContextProvider } from './context/CartContext';
 
 function App() {
@@ -19,14 +20,14 @@ function App() {
           <BrowserRouter>
             <NavBar></NavBar>
               <Routes>
-                <Route path='/' element={<ItemListContainer greeting="Muchas gracias por la buena onda!"/>}/>
-                <Route path='/products' element={<ItemListContainer greeting="Muchas gracias por la buena onda!"/>}/>
+                <Route path='/' element={<ItemListContainer />}/>
+                <Route path='/products' element={<ItemListContainer />}/>
                 <Route path='item/:sku'element={<ItemDetailContainer />}/>
-                <Route path='/products/:category'element={<ItemListContainer greeting="Muchas gracias por la buena onda!"/>}/>
+                <Route path='/products/:category'element={<ItemListContainer />}/>
                 <Route path='/cart'element={<ItemCartContainer />}/>
                 <Route path='/checkout'element={<Checkout />}/>
-                <Route path='contact'element={<h3>We are working on it, give us time</h3>}/>
-                <Route path='login'element={<h3>We are working on it, give us time</h3>}/>
+                <Route path='contact'element={<h3>Estamos trabajando en eso, muchas gracias por elegirnos</h3>}/>
+                <Route path='login'element={<LoginContainer />}/>
               </Routes>
           </BrowserRouter>
         </CartContextProvider>

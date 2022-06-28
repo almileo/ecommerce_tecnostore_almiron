@@ -17,7 +17,7 @@ const ItemDetailContainer = () => {
       getDoc(doc(db, 'products', sku)).then(res => {
         const product = { sku: res.id, ...res.data() };
         setDetail(product);
-      }).catch(e => console.log('error: ', e));
+      }).catch(e => console.error('error: ', e));
 
     }, [sku])
     
@@ -30,3 +30,5 @@ const ItemDetailContainer = () => {
 }
 
 export default ItemDetailContainer
+
+938233

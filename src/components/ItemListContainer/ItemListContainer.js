@@ -8,7 +8,7 @@ import ItemList from '../ItemList/ItemList';
 import { getDocs, collection, query, where } from 'firebase/firestore';
 import { db } from '../../services/firebase';
 
-const ItemListContainer = (props) => {
+const ItemListContainer = () => {
   const [products, setProducts] = useState([]);
   const { category } = useParams();
 
@@ -22,7 +22,7 @@ const ItemListContainer = (props) => {
         return { sku: doc.id, ...doc.data() }
       })
       setProducts(products);
-    }).catch(e => console.log('error: ', e));
+    }).catch(e => console.error('error: ', e));
    
   }, [category]);
 
