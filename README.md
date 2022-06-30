@@ -86,9 +86,8 @@ Tambien hay un archivo de ejemplo .env.example
 
 
 ## Demo
+[coderhouse proyecto final.webm](https://user-images.githubusercontent.com/60020626/176573527-f322439f-3f5f-428a-8c1d-8ce9a5496645.webm)
 
-Insert gif or link to demo
-(https://github.com/almileo/ecommerce_tecnostore_almiron/blob/main/public/img/Tecnostore%20-%20Entrega%20Final%20curso%20React%20coder%2006-22.gif)
 
 
 ## Badges
